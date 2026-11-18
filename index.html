@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="DeTim membagi daftar nama menjadi kelompok tugas secara acak, seimbang, dan cepat. Data disimpan di perangkat Anda.">
+    <meta name="theme-color" content="#FBF7EE" id="themeColor">
+    <title>DeTim | Pembagi Kelompok Tugas</title>
+
+    <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="assets/icons/favicon-32.png" sizes="32x32" type="image/png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">
+    <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <script src="js/storage.js"></script>
+    <script>
+        document.documentElement.setAttribute("data-theme", DeTim.storage.getStoredTheme());
+    </script>
+</head>
+<body>
+    <a class="skip-link" href="#main">Lewati ke konten utama</a>
+
+    <svg class="icon-sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+        <symbol id="i-users" viewBox="0 0 24 24">
+            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+            <circle cx="9" cy="7" r="4"></circle>
+            <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+        </symbol>
+        <symbol id="i-plus" viewBox="0 0 24 24">
+            <path d="M5 12h14"></path>
+            <path d="M12 5v14"></path>
+        </symbol>
+        <symbol id="i-minus" viewBox="0 0 24 24">
+            <path d="M5 12h14"></path>
+        </symbol>
+        <symbol id="i-trash" viewBox="0 0 24 24">
+            <path d="M3 6h18"></path>
+            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"></path>
+            <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+            <path d="M10 11v6"></path>
+            <path d="M14 11v6"></path>
+        </symbol>
+        <symbol id="i-pencil" viewBox="0 0 24 24">
+            <path d="M12 20h9"></path>
+            <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"></path>
+        </symbol>
+        <symbol id="i-copy" viewBox="0 0 24 24">
+            <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+            <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+        </symbol>
+        <symbol id="i-download" viewBox="0 0 24 24">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <path d="m7 10 5 5 5-5"></path>
+            <path d="M12 15V3"></path>
+        </symbol>
+        <symbol id="i-printer" viewBox="0 0 24 24">
+            <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+            <path d="M6 9V3h12v6"></path>
+            <rect width="12" height="8" x="6" y="14"></rect>
+        </symbol>
+        <symbol id="i-refresh" viewBox="0 0 24 24">
+            <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"></path>
+            <path d="M21 3v5h-5"></path>
+            <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"></path>
+            <path d="M3 21v-5h5"></path>
+        </symbol>
+        <symbol id="i-check" viewBox="0 0 24 24">
+            <path d="M20 6 9 17l-5-5"></path>
+        </symbol>
+        <symbol id="i-alert" viewBox="0 0 24 24">
+            <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path>
+            <path d="M12 9v4"></path>
+            <path d="M12 17h.01"></path>
+        </symbol>
+        <symbol id="i-x" viewBox="0 0 24 24">
+            <path d="M18 6 6 18"></path>
+            <path d="m6 6 12 12"></path>
+        </symbol>
+        <symbol id="i-history" viewBox="0 0 24 24">
+            <path d="M3 12a9 9 0 1 0 3-6.7L3 8"></path>
+            <path d="M3 3v5h5"></path>
+            <path d="M12 7v5l4 2"></path>
+        </symbol>
+        <symbol id="i-file" viewBox="0 0 24 24">
+            <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path>
+            <path d="M14 2v4a2 2 0 0 0 2 2h4"></path>
+            <path d="M10 9H8"></path>
+            <path d="M16 13H8"></path>
+            <path d="M16 17H8"></path>
+        </symbol>
+    </svg>
+
+    <header class="site-header">
+        <div class="container header-inner header-inner--brand">
+            <a class="brand" href="#main" aria-label="DeTim, ke konten utama">
+                <span class="brand-word">De<span class="brand-word__accent">Tim</span></span>
+            </a>
+        </div>
+    </header>
+
+    <main id="main">
+        <h1 class="sr-only">DeTim — Pembagi kelompok tugas</h1>
+
+        <div class="container">
+            <div class="notice notice--warning" id="storageNotice" role="status" hidden>
+                <svg class="icon" aria-hidden="true"><use href="#i-alert"></use></svg>
+                <p id="storageNoticeText"></p>
+            </div>
+        </div>
+
+        <section class="section" id="buat" aria-labelledby="buatTitle">
+            <div class="container">
+                <div class="section-heading">
+                    <div>
+                        <h2 id="buatTitle">Siapkan anggota dan kelompok</h2>
+                        <p>Tempel daftar nama, periksa anggotanya, lalu tentukan berapa kelompok yang dibutuhkan.</p>
+                    </div>
+                </div>
+
+                <div class="workspace">
+                    <div class="workspace-form">
+                        <form id="memberForm" novalidate>
+                            <div class="field">
+                                <div class="field-head">
+                                    <label for="memberInput">Nama anggota</label>
+                                    <span class="field-hint">Satu nama per baris</span>
+                                </div>
+                                <textarea id="memberInput" name="members" rows="8" spellcheck="false" autocomplete="off"
+                                    placeholder="Dennis Naufal Orlando&#10;Andi Saputra&#10;Budi Santoso&#10;Siti Rahma&#10;Putri Amelia&#10;Rizky Pratama"
+                                    aria-describedby="memberHint memberStatus duplicateStatus memberError"></textarea>
+                                <p class="sr-only" id="memberHint">Ketik satu nama per baris. Baris kosong diabaikan dan spasi berlebih dirapikan.</p>
+                                <div class="gender-field">
+                                    <div class="gender-field__copy">
+                                        <label for="memberGenderInput">Jenis kelamin nama baru</label>
+                                        <p id="memberGenderHint">Berlaku untuk nama yang ditambahkan berikutnya. Bisa diubah per anggota.</p>
+                                    </div>
+                                    <select id="memberGenderInput" class="gender-select" aria-describedby="memberGenderHint">
+                                        <option value="">Belum diisi</option>
+                                        <option value="male">Laki-laki</option>
+                                        <option value="female">Perempuan</option>
+                                    </select>
+                                </div>
+                                <div class="field-meta">
+                                    <p id="memberStatus" aria-live="polite">Belum ada nama di kolom input.</p>
+                                    <p class="field-warning" id="duplicateStatus" hidden></p>
+                                </div>
+                                <p class="field-error" id="memberError" role="alert" hidden></p>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn--primary" id="addMembersBtn">
+                                    <svg class="icon" aria-hidden="true"><use href="#i-plus"></use></svg>
+                                    Tambahkan anggota
+                                </button>
+                                <button type="button" class="btn btn--ghost" id="clearInputBtn">Bersihkan kolom</button>
+                            </div>
+                        </form>
+
+                        <div class="config">
+                            <form id="configForm" novalidate>
+                                <div class="config-head">
+                                    <div>
+                                        <h3 id="groupCountHeading">Jumlah kelompok</h3>
+                                        <p id="groupCountHint">Tentukan antara 1 dan jumlah anggota.</p>
+                                    </div>
+                                </div>
+                                <div class="config-controls">
+                                    <div class="stepper" role="group" aria-label="Jumlah kelompok">
+                                        <button type="button" class="stepper-button" id="decreaseGroups" aria-label="Kurangi jumlah kelompok">
+                                            <svg class="icon" aria-hidden="true"><use href="#i-minus"></use></svg>
+                                        </button>
+                                        <input type="number" id="groupCountInput" name="groupCount" min="1" step="1" inputmode="numeric" value="2"
+                                            aria-labelledby="groupCountHeading" aria-describedby="groupCountHint groupCountError distributionHint">
+                                        <button type="button" class="stepper-button" id="increaseGroups" aria-label="Tambah jumlah kelompok">
+                                            <svg class="icon" aria-hidden="true"><use href="#i-plus"></use></svg>
+                                        </button>
+                                    </div>
+                                    <p class="distribution-hint" id="distributionHint">Tambahkan anggota untuk melihat pembagian.</p>
+                                </div>
+                                <p class="field-error" id="groupCountError" role="alert" hidden></p>
+                                <button type="submit" class="btn btn--primary btn--block" id="generateBtn">
+                                    <svg class="icon" aria-hidden="true"><use href="#i-users"></use></svg>
+                                    Buat kelompok
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <section class="workspace-members" aria-labelledby="membersTitle">
+                        <div class="members-head">
+                            <div>
+                                <h3 id="membersTitle">Anggota terdaftar</h3>
+                                <p id="membersCount" aria-live="polite">0 anggota</p>
+                            </div>
+                            <button type="button" class="text-button text-button--danger" id="clearMembersBtn" disabled>Hapus semua</button>
+                        </div>
+
+                        <div class="members-scroll">
+                            <ul class="members-list" id="membersList"></ul>
+                            <div class="empty-small" id="membersEmpty">
+                                <svg class="icon" aria-hidden="true"><use href="#i-users"></use></svg>
+                                <p>Belum ada anggota terdaftar.</p>
+                                <span>Nama yang ditambahkan akan muncul di sini.</span>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </section>
+
+        <section class="section results-section" id="hasil" aria-labelledby="resultsTitle">
+            <div class="container">
+                <div class="section-heading section-heading--split">
+                    <div class="results-copy">
+                        <div class="results-title-line">
+                            <h2 id="resultsTitle" tabindex="-1">Hasil pembagian</h2>
+                            <span class="status status--neutral" id="resultStatus" hidden></span>
+                        </div>
+                        <p id="resultMeta">Belum ada hasil. Buat kelompok pertama Anda dari daftar anggota.</p>
+                    </div>
+                    <div class="results-actions" id="resultActions" hidden>
+                        <button type="button" class="btn btn--primary" id="regenerateBtn">
+                            <svg class="icon" aria-hidden="true"><use href="#i-refresh"></use></svg>
+                            Acak ulang
+                        </button>
+                        <button type="button" class="btn btn--secondary" id="copyAllBtn">
+                            <svg class="icon" aria-hidden="true"><use href="#i-copy"></use></svg>
+                            Salin semua
+                        </button>
+                        <button type="button" class="btn btn--secondary" id="downloadBtn">
+                            <svg class="icon" aria-hidden="true"><use href="#i-download"></use></svg>
+                            Unduh TXT
+                        </button>
+                        <button type="button" class="btn btn--secondary" id="printBtn">
+                            <svg class="icon" aria-hidden="true"><use href="#i-printer"></use></svg>
+                            Cetak
+                        </button>
+                    </div>
+                </div>
+
+                <div class="notice notice--warning notice--inline" id="staleBanner" hidden>
+                    <svg class="icon" aria-hidden="true"><use href="#i-alert"></use></svg>
+                    <div>
+                        <p id="staleMessage">Hasil ini dibuat dari data anggota sebelumnya.</p>
+                        <button type="button" class="text-button" id="refreshStaleBtn">Acak ulang dengan data terbaru</button>
+                    </div>
+                </div>
+
+                <div class="empty-state" id="resultsEmpty">
+                    <svg class="icon" aria-hidden="true"><use href="#i-file"></use></svg>
+                    <h3>Belum ada kelompok</h3>
+                    <p>Tambahkan minimal satu anggota, tentukan jumlah kelompok, lalu buat pembagian pertama Anda.</p>
+                    <a class="text-link" href="#buat">Ke daftar anggota</a>
+                </div>
+
+                <div class="groups-grid" id="groupsGrid" hidden></div>
+            </div>
+        </section>
+
+        <section class="section history-section" id="riwayat" aria-labelledby="historyTitle">
+            <div class="container">
+                <div class="section-heading section-heading--split">
+                    <div>
+                        <h2 id="historyTitle">Riwayat pembagian</h2>
+                        <p>Buka kembali susunan sebelumnya. Maksimal 20 sesi tersimpan di perangkat ini.</p>
+                    </div>
+                    <button type="button" class="btn btn--ghost btn--danger-text" id="clearHistoryBtn" disabled>
+                        <svg class="icon" aria-hidden="true"><use href="#i-trash"></use></svg>
+                        Hapus semua riwayat
+                    </button>
+                </div>
+
+                <div class="history-panel">
+                    <ul class="history-list" id="historyList"></ul>
+                    <div class="empty-state empty-state--compact" id="historyEmpty">
+                        <svg class="icon" aria-hidden="true"><use href="#i-history"></use></svg>
+                        <h3>Riwayat masih kosong</h3>
+                        <p>Setiap kelompok yang Anda buat akan tersimpan di sini, maksimal 20 sesi.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="data-management" id="kelola" aria-labelledby="dataTitle">
+                <div>
+                    <h2 id="dataTitle">Pengelolaan data</h2>
+                </div>
+                <div class="data-actions">
+                    <button type="button" class="btn btn--secondary" id="resetSessionBtn">Reset sesi</button>
+                    <button type="button" class="btn btn--ghost btn--danger-text" id="deleteAllBtn">Hapus semua data</button>
+                </div>
+            </div>
+
+            <div class="footer-inner">
+                <div>
+                    <p class="footer-brand">DeTim <span>V1.0</span></p>
+                    <p>Pembagi kelompok tugas untuk kelas dan tim.</p>
+                </div>
+                <p class="footer-note">Data diproses dan disimpan di perangkat Anda.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="toast-region" id="toastRegion" aria-live="polite" aria-atomic="false"></div>
+
+    <dialog class="dialog" id="confirmDialog" aria-labelledby="confirmTitle" aria-describedby="confirmMessage">
+        <form method="dialog" class="dialog-panel">
+            <h2 id="confirmTitle">Konfirmasi</h2>
+            <p id="confirmMessage"></p>
+            <div class="dialog-actions">
+                <button type="submit" value="cancel" class="btn btn--ghost">Batal</button>
+                <button type="submit" value="confirm" class="btn btn--danger" id="confirmAccept">Hapus</button>
+            </div>
+        </form>
+    </dialog>
+
+    <section class="print-sheet" id="printView" aria-hidden="true"></section>
+
+    <noscript>
+        <div class="noscript-message">DeTim memerlukan JavaScript untuk membuat dan menyimpan kelompok. Aktifkan JavaScript di browser Anda.</div>
+    </noscript>
+
+    <script src="js/grouping.js"></script>
+    <script src="js/members.js"></script>
+    <script src="js/history.js"></script>
+    <script src="js/export.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

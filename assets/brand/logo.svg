@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 64 64" role="img" aria-labelledby="logoTitle logoDesc">
+    <title id="logoTitle">Logo DeTim</title>
+    <desc id="logoDesc">Huruf D dengan tiga bagian kelompok berwarna krem dan oranye di dalam kotak marun.</desc>
+    <rect width="64" height="64" rx="15" fill="#930031"/>
+    <path d="M25.982 17.641a14.5 14.5 0 0 1 14.575 7.109" fill="none" stroke="#FFF2A7" stroke-width="9"/>
+    <path d="M41.347 26.334a14.5 14.5 0 0 1 0 11.332" fill="none" stroke="#FFA500" stroke-width="9"/>
+    <path d="M40.557 39.25a14.5 14.5 0 0 1-14.575 7.109" fill="none" stroke="#FFF2A7" stroke-width="9"/>
+    <path d="M22.5 13H28v38h-5.5A5.5 5.5 0 0 1 17 45.5v-27A5.5 5.5 0 0 1 22.5 13Z" fill="#FFF2A7"/>
+</svg>

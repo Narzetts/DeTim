@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dokumentasi Screenshot DeTim</title>
+    <style>
+        :root {
+            --bg: #FBF7EE;
+            --surface: #FFFFFF;
+            --surface-muted: #F5EDDC;
+            --text: #3B2B30;
+            --text-soft: #5C484E;
+            --text-muted: #7B666F;
+            --border: #E8DFD0;
+            --primary: #930031;
+            --primary-hover: #780027;
+            --accent: #FFA500;
+            --soft: #FFF2A7;
+            --on-primary: #FFF8E7;
+        }
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+            line-height: 1.55;
+        }
+        a { color: inherit; }
+        .hero {
+            padding: 64px 24px 40px;
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+        }
+        .hero__inner, .wrap { width: min(1180px, 100%); margin: 0 auto; }
+        .brand {
+            display: inline-block;
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: -0.04em;
+            text-decoration: none;
+        }
+        .brand span {
+            padding: 1px 5px;
+            border-radius: 4px;
+            background: var(--accent);
+            color: #3A0B1A;
+        }
+        .hero h1 {
+            margin: 22px 0 8px;
+            font-size: clamp(30px, 4vw, 44px);
+            letter-spacing: -0.035em;
+            line-height: 1.05;
+        }
+        .hero p { max-width: 70ch; margin: 0; color: var(--text-soft); }
+        .hero .note {
+            display: inline-block;
+            margin-top: 18px;
+            padding: 7px 11px;
+            border: 1px solid var(--accent);
+            border-radius: 6px;
+            background: var(--soft);
+            color: #6E3C00;
+            font-size: 13px;
+        }
+        .toc {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 20px 24px;
+            background: var(--surface-muted);
+            border-bottom: 1px solid var(--border);
+        }
+        .toc a {
+            display: inline-flex;
+            align-items: center;
+            min-height: 34px;
+            padding: 6px 11px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            background: var(--surface);
+            color: var(--primary);
+            font-size: 12.5px;
+            font-weight: 600;
+            text-decoration: none;
+        }
+        .toc a:hover { border-color: var(--primary); }
+        .wrap { padding: 8px 24px 64px; }
+        .section { padding-top: 48px; }
+        .section__head {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            margin-bottom: 18px;
+        }
+        .section__number {
+            display: grid;
+            place-items: center;
+            width: 38px;
+            height: 38px;
+            border-radius: 9px;
+            background: var(--primary);
+            color: var(--on-primary);
+            font-size: 12px;
+            font-weight: 700;
+        }
+        .section h2 {
+            margin: 0;
+            font-size: clamp(23px, 3vw, 30px);
+            letter-spacing: -0.03em;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+            gap: 18px;
+        }
+        .card {
+            overflow: hidden;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            background: var(--surface);
+            box-shadow: 0 1px 2px rgba(59, 43, 48, 0.05);
+        }
+        .card__image {
+            display: block;
+            background: var(--surface-muted);
+            border-bottom: 1px solid var(--border);
+        }
+        .card__image img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+        .card__body { padding: 16px 18px 18px; }
+        .card__step {
+            margin: 0 0 4px;
+            color: var(--primary);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+        .card h3 {
+            margin: 0;
+            font-size: 16.5px;
+            letter-spacing: -0.015em;
+        }
+        .card p {
+            margin: 6px 0 0;
+            color: var(--text-soft);
+            font-size: 13px;
+        }
+        .card ol {
+            margin: 11px 0 0;
+            padding-left: 20px;
+            color: var(--text-soft);
+            font-size: 12.5px;
+            line-height: 1.55;
+        }
+        .card ol li + li { margin-top: 3px; }
+        footer {
+            padding: 24px;
+            border-top: 1px solid var(--border);
+            background: var(--surface);
+            color: var(--text-muted);
+            font-size: 12.5px;
+            text-align: center;
+        }
+        @media (max-width: 560px) {
+            .hero { padding: 40px 18px 28px; }
+            .toc { padding: 14px 18px; }
+            .wrap { padding: 0 18px 44px; }
+            .grid { grid-template-columns: 1fr; }
+            .section { padding-top: 36px; }
+        }
+    </style>
+</head>
+<body>
+    <header class="hero">
+        <div class="hero__inner">
+            <a class="brand" href="../index.html">De<span>Tim</span></a>
+            <h1>Dokumentasi Screenshot</h1>
+            <p>Kumpulan tangkapan layar seluruh fitur DeTim beserta cara menggunakannya. Klik gambar untuk membuka versi penuh.</p>
+            <p class="note">Diambil dari aplikasi DeTim V1.0 · 26 gambar</p>
+        </div>
+    </header>
+    <nav class="toc"><a href="#bagian-1">Memulai dan Menambah Anggota</a><a href="#bagian-2">Mengatur Kelompok dan Membuat Hasil</a><a href="#bagian-3">Menyalin, Mengunduh, dan Mencetak</a><a href="#bagian-4">Riwayat dan Pengelolaan Data</a><a href="#bagian-5">Tampilan Mobile</a></nav>
+    <main class="wrap">
+            <section id="bagian-1" class="section">
+                <div class="section__head">
+                    <span class="section__number">01</span>
+                    <h2>Memulai dan Menambah Anggota</h2>
+                </div>
+                <div class="grid">
+            <article class="card">
+                <a class="card__image" href="01-halaman-awal.png" target="_blank" rel="noopener">
+                    <img src="01-halaman-awal.png" alt="Halaman awal" loading="lazy">
+                </a>
+                <div class="card__body">
+                    <p class="card__step">Langkah 01</p>
+                    <h3>Halaman awal</h3>
+                    <p>Tampilan pertama DeTim saat belum ada anggota, hasil, maupun riwayat.</p>
+                    <ol><li>Buka index.html atau alamat server lokal DeTim.</li><li>Kolom nama, pengaturan kelompok, bagian hasil, riwayat, dan pengelolaan data tersedia dalam satu halaman.</li><li>Data yang tersimpan di perangkat akan dipulihkan otomatis saat halaman dibuka kembali.</li></ol>
+                </div>
+            </article>
+        
+            <article class="card">
+                <a class="card__image" href="02-input-massal-dan-duplikat.png" target="_blank" rel="noopener">
+                    <img src="02-input-massal-dan-duplikat.png" alt="Input massal dan deteksi nama ganda" loading="lazy">
+                </a>
+                <div class="card__body">
+                    <p class="card__step">Langkah 02</p>
+                    <h3>Input massal dan deteksi nama ganda</h3>
+                    <p>Beberapa nama dimasukkan sekaligus. DeTim mendeteksi jumlah nama, menandai duplikat, dan menyiapkan jenis kelamin untuk nama baru.</p>
+                    <ol><li>Ketik atau tempel satu nama per baris di kolom Nama anggota.</li><li>Pilih Laki-laki, Perempuan, atau Belum diisi untuk nama yang akan ditambahkan.</li><li>Nama ganda atau yang sudah terdaftar akan dilewati dan diberitahukan sebelum ditambahkan.</li></ol>
+                </div>
+            </article>
+        
+            <article class="card">
+                <a class="card__image" href="03-anggota-terdaftar.png" target="_blank" rel="noopener">
+                    <img src="03-anggota-terdaftar.png" alt="Anggota terdaftar dengan penanda jenis kelamin" loading="lazy">
+                </a>
+                <div class="card__body">
+                    <p class="card__step">Langkah 03</p>
+                    <h3>Anggota terdaftar dengan penanda jenis kelamin</h3>
+                    <p>Sembilan anggota berhasil masuk ke daftar. Badge L dan P membantu memeriksa komposisi jenis kelamin.</p>
+                    <ol><li>Klik Tambahkan anggota untuk memindahkan nama dari kolom input ke daftar.</li><li>Periksa jumlah anggota dan badge jenis kelamin di panel Anggota terdaftar.</li><li>Gunakan tombol pensil untuk mengubah data atau tombol hapus untuk membuang anggota.</li></ol>
+                </div>
+            </article>
+        
+            <article class="card">
+                <a class="card__image" href="04-ubah-anggota.png" target="_blank" rel="noopener">
+                    <img src="04-ubah-anggota.png" alt="Mengubah nama dan jenis kelamin anggota" loading="lazy">
+                </a>
+                <div class="card__body">
+                    <p class="card__step">Langkah 04</p>
+                    <h3>Mengubah nama dan jenis kelamin anggota</h3>
+                    <p>Form edit muncul langsung di baris anggota. Nama dan jenis kelamin dapat diperbaiki tanpa menghapus anggota.</p>
+                    <ol><li>Klik ikon pensil pada baris anggota.</li><li>Ubah nama, pilih jenis kelamin, lalu klik ikon centang untuk menyimpan atau ikon silang untuk membatalkan.</li><li>Tekan Escape untuk membatalkan perubahan dengan cepat.</li></ol>
+                </div>
+            </article>
+        
+            <article class="card">
+                <a class="card__image" href="05-hapus-anggota-urungkan.png" target="_blank" rel="noopener">
+                    <img src="05-hapus-anggota-urungkan.png" alt="Menghapus anggota dan mengurungkannya" loading="lazy">
+                </a>
+                <div class="card__body">
+                    <p class="card__step">Langkah 05</p>
+                    <h3>Menghapus anggota dan mengurungkannya</h3>
+                    <p>Anggota yang dihapus memunculkan notifikasi dengan tombol Urungkan selama beberapa detik.</p>
+                    <ol><li>Klik ikon tempat sampah pada baris anggota.</li><li>Jika tidak sengaja terhapus, klik Urungkan pada notifikasi untuk mengembalikannya.</li><li>Untuk menghapus seluruh daftar, gunakan tombol Hapus semua di panel anggota.</li></ol>
+                </div>
+            </article>
+        
+            <article class="card">
+                <a class="card__image" href="06-konfirmasi-hapus-anggota.png" target="_blank" rel="noopener">
+                    <img src="06-konfirmasi-hapus-anggota.png" alt="Konfirmasi hapus semua anggota" loading="lazy">
+                </a>
+                <div class="card__body">
+                    <p class="card__step">Langkah 06</p>
+                    <h3>Konfirmasi hapus semua anggota</h3>
+                    <p>Tindakan yang berdampak besar selalu meminta konfirmasi, termasuk penghapusan seluruh anggota.</p>
+                    <ol><li>Klik Hapus semua di panel Anggota terdaftar.</li><li>Periksa pesan konfirmasi, lalu pilih Hapus semua atau Batal.</li></ol>
+                </div>
+            </article>
+        </div>
+            </section>
+        
+            <section id="bagian-2" class="section">
+                <div class="section__head">
+                    <span class="section__number">02</span>
+                    <h2>Mengatur Kelompok dan Membuat Hasil</h2>
+                </div>
+                <div class="grid">
+            <article class="card">
+                <a class="card__image" href="07-jumlah-kelompok-dan-estimasi.png" target="_blank" rel="noopener">
+                    <img src="07-jumlah-kelompok-dan-estimasi.png" alt="Menentukan jumlah kelompok" loading="lazy">
+                </a>
+                <div class="card__body">
+                    <p class="card__step">Langkah 01</p>
+                    <h3>Menentukan jumlah kelompok</h3>
+                    <p>Jumlah kelompok dapat diatur lewat tombol plus/minus atau diketik langsung. DeTim menampilkan estimasi isi tiap kelompok.</p>
+                    <ol><li>Masukkan jumlah kelompok yang diinginkan, misalnya 3.</li><li>Angka harus bulat, minimal 1, dan tidak melebihi jumlah anggota.</li><li>Baca estimasi seperti Setiap kelompok berisi 3 anggota sebelum membuat hasil.</li></ol>
+                </div>
+            </article>
+        
+            <article class="card">
+                <a class="card__image" href="08-validasi-jumlah-kelompok.png" target="_blank" rel="noopener">
+                    <img src="08-validasi-jumlah-kelompok.png" alt="Validasi jumlah kelompok" loading="lazy">
+                </a>
+                <div class="card__body">
+                    <p class="card__step">Langkah 02</p>
+                    <h3>Validasi jumlah kelompok</h3>
+                    <p>DeTim menolak jumlah kelompok yang melebihi jumlah anggota dan menampilkan pesan kesalahan yang jelas.</p>
+                    <ol><li>Jika jumlah kelompok tidak valid, kolom ditandai merah dan pesan muncul di bawahnya.</li><li>Perbaiki jumlah kelompok sebelum menekan Buat kelompok.</li><li>Pembagian tidak akan dijalankan sampai jumlahnya valid.</li></ol>
+                </div>
+            </article>
+        
+            <article class="card">
+                <a class="card__image" href="09-hasil-pembagian.png" target="_blank" rel="noopener">
+                    <img src="09-hasil-pembagian.png" alt="Hasil pembagian kelompok" loading="lazy">
+                </a>
+                <div class="card__body">
+                    <p class="card__step">Langkah 03</p>
+                    <h3>Hasil pembagian kelompok</h3>
+                    <p>Anggota dibagi otomatis dan seimbang. Setiap kartu menampilkan nama kelompok, jumlah anggota, komposisi jenis kelamin, dan daftar nama.</p>
+                    <ol><li>Klik Buat kelompok setelah daftar anggota dan jumlah kelompok siap.</li><li>Hasil muncul sebagai kartu yang bisa disalin, dinamai ulang, atau diacak ulang.</li><li>Setiap anggota muncul tepat satu kali dengan selisih jumlah antar kelompok maksimal satu.</li></ol>
+                </div>
+            </article>
+        
+            <article class="card">
+                <a class="card__image" href="10-ubah-nama-kelompok.png" target="_blank" rel="noopener">
+                    <img src="10-ubah-nama-kelompok.png" alt="Mengubah nama kelompok" loading="lazy">
+                </a>
+                <div class="card__body">
+                    <p class="card__step">Langkah 04</p>
+                    <h3>Mengubah nama kelompok</h3>
+                    <p>Nama kelompok dapat disesuaikan langsung dari kartu hasil, misalnya menjadi nama tim atau proyek.</p>
+                    <ol><li>Klik ikon pensil di kartu kelompok.</li><li>Ketik nama baru, lalu tekan Enter atau klik ikon centang.</li><li>Klik ikon silang atau tekan Escape untuk membatalkan.</li></ol>
+                </div>
+            </article>
+        
+            <article class="card">
+                <a class="card__image" href="11-hasil-nama-kustom.png" target="_blank" rel="noopener">
+                    <img src="11-hasil-nama-kustom.png" alt="Hasil dengan nama kelompok kustom" loading="lazy">
+                </a>
+                <div class="card__body">
+                    <p class="card__step">Langkah 05</p>
+                    <h3>Hasil dengan nama kelompok kustom</h3>
+                    <p>Nama kelompok baru tetap dipakai saat hasil diacak ulang dengan jumlah kelompok yang sama.</p>
+                    <ol><li>Setelah nama diubah, kartu hasil langsung menampilkan nama baru.</li><li>Nama kustom dipertahankan saat Acak ulang dipakai tanpa mengubah jumlah kelompok.</li><li>Nama kelompok juga ikut tersimpan di riwayat.</li></ol>
+                </div>
+            </article>
+        
+            <article class="card">
+                <a class="card__image" href="12-hasil-kedaluwarsa.png" target="_blank" rel="noopener">
+                    <img src="12-hasil-kedaluwarsa.png" alt="Hasil ditandai kedaluwarsa" loading="lazy">
+                </a>
+                <div class="card__body">
+                    <p class="card__step">Langkah 06</p>
+                    <h3>Hasil ditandai kedaluwarsa</h3>
+                    <p>Jika daftar anggota atau jumlah kelompok berubah setelah hasil dibuat, hasil lama ditandai kedaluwarsa agar tidak dianggap terbaru.</p>
+                    <ol><li>Ubah jumlah kelompok atau daftar anggota setelah hasil dibuat.</li><li>DeTim menampilkan status Kedaluwarsa dan banner peringatan di bagian hasil.</li><li>Klik Acak ulang dengan data terbaru untuk membuat susunan yang sesuai.</li></ol>
+                </div>
+            </article>
+        
+            <article class="card">
+                <a class="card__image" href="13-acak-ulang-data-terbaru.png" target="_blank" rel="noopener">
+                    <img src="13-acak-ulang-data-terbaru.png" alt="Acak ulang dengan data terbaru" loading="lazy">
+                </a>
+                <div class="card__body">
+                    <p class="card__step">Langkah 07</p>
+                    <h3>Acak ulang dengan data terbaru</h3>
+                    <p>Hasil diperbarui memakai data terbaru, status kembali Sesuai data, dan sesi aktif di riwayat ikut diperbarui.</p>
+                    <ol><li>Klik Acak ulang di bagian hasil untuk mendapatkan susunan baru.</li><li>Jika hasil kedaluwarsa, klik Acak ulang dengan data terbaru pada banner.</li><li>Nama kelompok kustom dipertahankan bila jumlah kelompok tidak berubah.</li></ol>
+                </div>
+            </article>
+        </div>
+            </section>
+        
+            <section id="bagian-3" class="section">
+                <div class="section__head">
+                    <span class="section__number">03</span>
+                    <h2>Menyalin, Mengunduh, dan Mencetak</h2>
+                </div>
+                <div class="grid">
+            <article class="card">
+                <a class="card__image" href="14-salin-semua.png" target="_blank" rel="noopener">
+                    <img src="14-salin-semua.png" alt="Menyalin semua hasil" loading="lazy">
+                </a>
+                <div class="card__body">
+                    <p class="card__step">Langkah 01</p>
+                    <h3>Menyalin semua hasil</h3>
+                    <p>Seluruh kelompok disalin dalam format teks yang rapi, termasuk keterangan bila hasil kedaluwarsa.</p>
+                    <ol><li>Klik Salin semua pada bagian hasil.</li><li>Tempel teks ke aplikasi pesan, dokumen, atau catatan.</li><li>Notifikasi mengonfirmasi bahwa semua kelompok berhasil disalin.</li></ol>
+                </div>
+            </article>
+        
+            <article class="card">
+                <a class="card__image" href="15-salin-kelompok.png" target="_blank" rel="noopener">
+                    <img src="15-salin-kelompok.png" alt="Menyalin satu kelompok" loading="lazy">
+                </a>
+                <div class="card__body">
+                    <p class="card__step">Langkah 02</p>
+                    <h3>Menyalin satu kelompok</h3>
+                    <p>Setiap kartu memiliki tombol salin sendiri untuk mengambil daftar anggota satu kelompok saja.</p>
+                    <ol><li>Klik ikon salin di kartu kelompok yang diinginkan.</li><li>Tempel hasilnya ke pesan atau dokumen.</li><li>Gunakan Salin semua jika membutuhkan seluruh kelompok sekaligus.</li></ol>
+                </div>
+            </article>
+        
+            <article class="card">
+                <a class="card__image" href="16-unduh-txt.png" target="_blank" rel="noopener">
+                    <img src="16-unduh-txt.png" alt="Mengunduh hasil sebagai TXT" loading="lazy">
+                </a>
+                <div class="card__body">
+                    <p class="card__step">Langkah 03</p>
+                    <h3>Mengunduh hasil sebagai TXT</h3>
+                    <p>Hasil dapat diunduh sebagai berkas teks dengan nama tanggal otomatis, misalnya DeTim-Hasil-Kelompok-2026-11-17.txt.</p>
+                    <ol><li>Klik Unduh TXT pada bagian hasil.</li><li>Berkas TXT tersimpan melalui unduhan browser.</li><li>Berkas dapat dibuka di aplikasi teks apa pun atau dilampirkan ke pesan.</li></ol>
+                </div>
+            </article>
+        
+            <article class="card">
+                <a class="card__image" href="17-cetak-pratinjau.png" target="_blank" rel="noopener">
+                    <img src="17-cetak-pratinjau.png" alt="Pratinjau cetak dan simpan PDF" loading="lazy">
+                </a>
+                <div class="card__body">
+                    <p class="card__step">Langkah 04</p>
+                    <h3>Pratinjau cetak dan simpan PDF</h3>
+                    <p>Tampilan cetak khusus berisi judul, sesi, tanggal, semua kelompok, dan anggota tanpa navigasi atau tombol aplikasi.</p>
+                    <ol><li>Klik Cetak pada bagian hasil.</li><li>Di dialog cetak browser, pilih printer atau Save as PDF.</li><li>Atur ukuran kertas dan margin, lalu cetak atau simpan.</li></ol>
+                </div>
+            </article>
+        </div>
+            </section>
+        
+            <section id="bagian-4" class="section">
+                <div class="section__head">
+                    <span class="section__number">04</span>
+                    <h2>Riwayat dan Pengelolaan Data</h2>
+                </div>
+                <div class="grid">
+            <article class="card">
+                <a class="card__image" href="18-riwayat.png" target="_blank" rel="noopener">
+                    <img src="18-riwayat.png" alt="Riwayat pembagian" loading="lazy">
+                </a>
+                <div class="card__body">
+                    <p class="card__step">Langkah 01</p>
+                    <h3>Riwayat pembagian</h3>
+                    <p>Setiap hasil baru disimpan sebagai sesi riwayat. Sesi aktif ditandai Sedang ditampilkan dan maksimal 20 sesi disimpan.</p>
+                    <ol><li>Buka bagian Riwayat untuk melihat sesi yang pernah dibuat.</li><li>Klik Buka untuk menampilkan kembali susunan lama.</li><li>Klik ikon tempat sampah untuk menghapus satu sesi.</li></ol>
+                </div>
+            </article>
+        
+            <article class="card">
+                <a class="card__image" href="19-buka-sesi-riwayat.png" target="_blank" rel="noopener">
+                    <img src="19-buka-sesi-riwayat.png" alt="Membuka sesi dari riwayat" loading="lazy">
+                </a>
+                <div class="card__body">
+                    <p class="card__step">Langkah 02</p>
+                    <h3>Membuka sesi dari riwayat</h3>
+                    <p>Sesi lama dapat dibuka kembali beserta anggota, jumlah kelompok, hasil, dan nama kelompok kustomnya.</p>
+                    <ol><li>Temukan sesi di bagian Riwayat.</li><li>Klik Buka pada baris sesi.</li><li>DeTim memuat sesi tersebut sebagai hasil aktif dan menandainya Sedang ditampilkan.</li></ol>
+                </div>
+            </article>
+        
+            <article class="card">
+                <a class="card__image" href="20-hapus-sesi-dialog.png" target="_blank" rel="noopener">
+                    <img src="20-hapus-sesi-dialog.png" alt="Konfirmasi hapus satu sesi" loading="lazy">
+                </a>
+                <div class="card__body">
+                    <p class="card__step">Langkah 03</p>
+                    <h3>Konfirmasi hapus satu sesi</h3>
+                    <p>Penghapusan satu sesi riwayat juga meminta konfirmasi dan menjelaskan dampaknya bila sesi sedang ditampilkan.</p>
+                    <ol><li>Klik ikon tempat sampah pada baris riwayat.</li><li>Periksa pesan konfirmasi.</li><li>Klik Hapus sesi untuk melanjutkan atau Batal untuk membatalkan.</li></ol>
+                </div>
+            </article>
+        
+            <article class="card">
+                <a class="card__image" href="21-hapus-riwayat-dialog.png" target="_blank" rel="noopener">
+                    <img src="21-hapus-riwayat-dialog.png" alt="Konfirmasi hapus semua riwayat" loading="lazy">
+                </a>
+                <div class="card__body">
+                    <p class="card__step">Langkah 04</p>
+                    <h3>Konfirmasi hapus semua riwayat</h3>
+                    <p>Seluruh riwayat dapat dibersihkan sekaligus. Hasil yang sedang ditampilkan tetap ada, tetapi tidak lagi tercatat.</p>
+                    <ol><li>Klik Hapus semua riwayat di bagian Riwayat.</li><li>Baca penjelasan pada dialog.</li><li>Klik Hapus riwayat untuk mengosongkan riwayat atau Batal untuk membatalkan.</li></ol>
+                </div>
+            </article>
+        
+            <article class="card">
+                <a class="card__image" href="22-pengelolaan-data.png" target="_blank" rel="noopener">
+                    <img src="22-pengelolaan-data.png" alt="Pengelolaan data di footer" loading="lazy">
+                </a>
+                <div class="card__body">
+                    <p class="card__step">Langkah 05</p>
+                    <h3>Pengelolaan data di footer</h3>
+                    <p>Reset sesi mengosongkan pekerjaan saat ini, sedangkan Hapus semua data menghapus anggota, hasil, riwayat, dan preferensi.</p>
+                    <ol><li>Gulir ke bagian Pengelolaan data di footer.</li><li>Pilih Reset sesi untuk memulai pekerjaan baru tanpa menghapus riwayat.</li><li>Pilih Hapus semua data untuk membersihkan seluruh data DeTim dari perangkat.</li></ol>
+                </div>
+            </article>
+        
+            <article class="card">
+                <a class="card__image" href="23-reset-sesi-dialog.png" target="_blank" rel="noopener">
+                    <img src="23-reset-sesi-dialog.png" alt="Konfirmasi reset sesi" loading="lazy">
+                </a>
+                <div class="card__body">
+                    <p class="card__step">Langkah 06</p>
+                    <h3>Konfirmasi reset sesi</h3>
+                    <p>Reset sesi menghapus anggota, hasil, dan jumlah kelompok saat ini, tetapi mempertahankan riwayat dan tema.</p>
+                    <ol><li>Klik Reset sesi.</li><li>Periksa cakupan tindakan pada dialog.</li><li>Klik Reset sesi untuk melanjutkan atau Batal untuk membatalkan.</li></ol>
+                </div>
+            </article>
+        
+            <article class="card">
+                <a class="card__image" href="24-hapus-semua-data-dialog.png" target="_blank" rel="noopener">
+                    <img src="24-hapus-semua-data-dialog.png" alt="Konfirmasi hapus semua data" loading="lazy">
+                </a>
+                <div class="card__body">
+                    <p class="card__step">Langkah 07</p>
+                    <h3>Konfirmasi hapus semua data</h3>
+                    <p>Tindakan paling menyeluruh menghapus semua data DeTim dari perangkat dan tidak dapat dibatalkan.</p>
+                    <ol><li>Klik Hapus semua data.</li><li>Baca peringatan bahwa tindakan tidak dapat dibatalkan.</li><li>Klik Hapus semua data untuk melanjutkan atau Batal untuk membatalkan.</li></ol>
+                </div>
+            </article>
+        </div>
+            </section>
+        
+            <section id="bagian-5" class="section">
+                <div class="section__head">
+                    <span class="section__number">05</span>
+                    <h2>Tampilan Mobile</h2>
+                </div>
+                <div class="grid">
+            <article class="card">
+                <a class="card__image" href="25-mobile-form.png" target="_blank" rel="noopener">
+                    <img src="25-mobile-form.png" alt="Formulir di layar ponsel" loading="lazy">
+                </a>
+                <div class="card__body">
+                    <p class="card__step">Langkah 01</p>
+                    <h3>Formulir di layar ponsel</h3>
+                    <p>Tata letak responsif menumpuk formulir dan daftar anggota secara vertikal dengan target sentuh yang nyaman.</p>
+                    <ol><li>Buka DeTim di ponsel atau perkecil lebar jendela browser.</li><li>Kolom nama, pilihan jenis kelamin, dan tombol tersusun penuh agar mudah disentuh.</li><li>Gulir ke bawah untuk melihat anggota, hasil, dan riwayat.</li></ol>
+                </div>
+            </article>
+        
+            <article class="card">
+                <a class="card__image" href="26-mobile-hasil.png" target="_blank" rel="noopener">
+                    <img src="26-mobile-hasil.png" alt="Hasil kelompok di layar ponsel" loading="lazy">
+                </a>
+                <div class="card__body">
+                    <p class="card__step">Langkah 02</p>
+                    <h3>Hasil kelompok di layar ponsel</h3>
+                    <p>Kartu kelompok tersusun satu kolom sehingga nama anggota tetap terbaca tanpa gulir horizontal.</p>
+                    <ol><li>Setelah membuat kelompok, gulir ke bagian Hasil pembagian.</li><li>Setiap kartu kelompok tampil selebar layar.</li><li>Gunakan tombol salin atau pensil pada tiap kartu seperti di desktop.</li></ol>
+                </div>
+            </article>
+        </div>
+            </section>
+        </main>
+    <footer>DeTim · Panduan dibuat dari alur penggunaan aplikasi.</footer>
+</body>
+</html>
